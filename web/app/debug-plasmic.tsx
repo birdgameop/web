@@ -28,7 +28,7 @@ export function DebugPlasmic() {
       
       try {
         // Try to fetch component data to see what's available
-        const data = await PLASMIC.fetchComponentData('HomePage')
+        const data = await PLASMIC.fetchComponentData('Homepage')
         console.log('Plasmic data:', data)
       } catch (err: any) {
         setError(err.message)

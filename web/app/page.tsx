@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <DebugPlasmic />
       <PlasmicComponent
-        component="HomePage"
+        component="Homepage"
       />
     </>
   )

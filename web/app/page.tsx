@@ -1,3 +1,5 @@
+'use client'
+
 import { PlasmicComponent } from '@plasmicapp/loader-nextjs'
 import { DebugPlasmic } from './debug-plasmic'
 import { PLASMIC } from '@/plasmic-init'

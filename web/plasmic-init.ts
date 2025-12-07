@@ -9,6 +9,7 @@ export const PLASMIC = initPlasmicLoader({
       token: process.env.PLASMIC_PROJECT_API_TOKEN || process.env.NEXT_PUBLIC_PLASMIC_PROJECT_API_TOKEN || '',
     },
   ],
-  preview: false,
+  preview: true, // Enable preview mode to work with Plasmic host
+  host: process.env.PLASMIC_HOST || 'https://studio.plasmic.app', // Plasmic host endpoint
 })
 

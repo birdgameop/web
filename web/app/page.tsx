@@ -1,7 +1,6 @@
 'use client'
 
 import { PlasmicComponent } from '@plasmicapp/loader-nextjs'
-import { DebugPlasmic } from './debug-plasmic'
 import { PLASMIC } from '@/plasmic-init'
 
 export default function Home() {
@@ -18,17 +17,13 @@ export default function Home() {
           <li>NEXT_PUBLIC_PLASMIC_PROJECT_ID</li>
           <li>NEXT_PUBLIC_PLASMIC_PROJECT_API_TOKEN</li>
         </ul>
-        <DebugPlasmic />
       </div>
     )
   }
   
   return (
-    <>
-      <DebugPlasmic />
-      <PlasmicComponent
-        component="Homepage"
-      />
-    </>
+    <PlasmicComponent
+      component="Homepage"
+    />
   )
 }

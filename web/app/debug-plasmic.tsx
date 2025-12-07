@@ -39,20 +39,33 @@ export function DebugPlasmic() {
   }, [])
 
   if (error || !hasLoader) {
+    const isProjectNotFound = error?.includes('not found')
     return (
       <div style={{ padding: '20px', background: '#fee', border: '1px solid #fcc', margin: '20px', borderRadius: '8px' }}>
         <h2 style={{ marginTop: 0 }}>⚠️ Plasmic Debug Info</h2>
         <p><strong>Error:</strong> {error || 'Plasmic loader not initialized'}</p>
         <p><strong>Project ID:</strong> {projectId}</p>
         <p><strong>Loader Status:</strong> {hasLoader ? '✓ Initialized' : '✗ Not initialized'}</p>
+        {isProjectNotFound && (
+          <div style={{ marginTop: '15px', padding: '15px', background: '#fff3cd', borderRadius: '4px', border: '1px solid #ffc107' }}>
+            <p><strong>⚠️ Project Not Found Error:</strong></p>
+            <ul style={{ textAlign: 'left', marginTop: '10px' }}>
+              <li>Verify the <strong>Project ID</strong> is correct in your Plasmic project settings</li>
+              <li>Verify the <strong>API Token</strong> has access to this project</li>
+              <li>Check if the project is in a different Plasmic workspace</li>
+              <li>If using a custom host (like birdgame.app), add <code>NEXT_PUBLIC_PLASMIC_HOST</code> in Vercel</li>
+            </ul>
+          </div>
+        )}
         <div style={{ marginTop: '20px', padding: '15px', background: '#fff', borderRadius: '4px' }}>
           <p><strong>🔧 To Fix:</strong></p>
           <ol style={{ textAlign: 'left' }}>
             <li>Go to Vercel Dashboard → Your Project → Settings → Environment Variables</li>
-            <li>Add these <strong>exact</strong> variable names (case-sensitive):</li>
+            <li>Verify these variables are set correctly:</li>
             <ul>
               <li><code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '3px' }}>NEXT_PUBLIC_PLASMIC_PROJECT_ID</code></li>
               <li><code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '3px' }}>NEXT_PUBLIC_PLASMIC_PROJECT_API_TOKEN</code></li>
+              <li><code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '3px' }}>NEXT_PUBLIC_PLASMIC_HOST</code> (if using custom host)</li>
             </ul>
             <li>Enable for: Production, Preview, and Development</li>
             <li><strong>Redeploy</strong> your site after adding the variables</li>

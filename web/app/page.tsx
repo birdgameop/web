@@ -1,14 +1,11 @@
 import { PlasmicComponent } from '@plasmicapp/loader-nextjs'
-import { PLASMIC } from '@/plasmic-init'
 
-export default async function Home() {
-  // Preload Plasmic data for the component
-  const plasmicData = await PLASMIC.fetchComponentData('HomePage')
-  
+export default function Home() {
+  // Render Plasmic component using project ID from environment
   return (
     <PlasmicComponent
-      loader={PLASMIC}
       component="HomePage"
+      projectId={process.env.PLASMIC_PROJECT_ID}
     />
   )
 }

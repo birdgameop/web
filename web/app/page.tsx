@@ -1,11 +1,10 @@
 import { PlasmicComponent } from '@plasmicapp/loader-nextjs'
 
 export default function Home() {
-  // Render Plasmic component using project ID from environment
+  // Render Plasmic component - loader is provided by PlasmicRootProvider in layout
   return (
     <PlasmicComponent
       component="HomePage"
-      projectId={process.env.PLASMIC_PROJECT_ID}
     />
   )
 }

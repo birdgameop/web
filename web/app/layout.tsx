@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { PlasmicRootProvider } from '@plasmicapp/loader-nextjs'
+import { PLASMIC } from '@/plasmic-init'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PlasmicRootProvider loader={PLASMIC}>
+          {children}
+        </PlasmicRootProvider>
+      </body>
     </html>
   )
 }

@@ -21,6 +21,11 @@ export function DebugPlasmic() {
     }
 
     async function fetchComponents() {
+      if (!PLASMIC) {
+        setError('Plasmic loader not initialized - check environment variables')
+        return
+      }
+      
       try {
         // Try to fetch component data to see what's available
         const data = await PLASMIC.fetchComponentData('HomePage')

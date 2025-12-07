@@ -1,4 +1,4 @@
-import { initPlasmicLoader } from '@plasmicapp/react-web'
+import { initPlasmicLoader } from '@plasmicapp/loader-nextjs'
 
 // Initialize Plasmic with your project ID and API token
 // These values come from environment variables

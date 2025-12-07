@@ -1,14 +1,15 @@
-'use client'
-
-import { PlasmicRootProvider, PlasmicComponent } from '@plasmicapp/react-web'
+import { PlasmicComponent } from '@plasmicapp/loader-nextjs'
 import { PLASMIC } from '@/plasmic-init'
 
-export default function Home() {
+export default async function Home() {
+  // Preload Plasmic data
+  const plasmicData = await PLASMIC.fetchComponentData('HomePage')
+  
   return (
-    <PlasmicRootProvider loader={PLASMIC}>
-      {/* Replace "HomePage" with your actual Plasmic component name */}
-      <PlasmicComponent component="HomePage" />
-    </PlasmicRootProvider>
+    <PlasmicComponent 
+      component="HomePage"
+      componentProps={plasmicData}
+    />
   )
 }
 

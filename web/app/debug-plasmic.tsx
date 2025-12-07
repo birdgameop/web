@@ -39,14 +39,26 @@ export function DebugPlasmic() {
   }, [])
 
   if (error || !hasLoader) {
-    const isProjectNotFound = error?.includes('not found')
+    const isProjectNotFound = error?.includes('not found') || error?.includes('Project with ID')
+    const isComponentNotFound = error?.includes('Unable to find components') || error?.includes('not found')
     return (
       <div style={{ padding: '20px', background: '#fee', border: '1px solid #fcc', margin: '20px', borderRadius: '8px' }}>
         <h2 style={{ marginTop: 0 }}>⚠️ Plasmic Debug Info</h2>
         <p><strong>Error:</strong> {error || 'Plasmic loader not initialized'}</p>
         <p><strong>Project ID:</strong> {projectId}</p>
         <p><strong>Loader Status:</strong> {hasLoader ? '✓ Initialized' : '✗ Not initialized'}</p>
-        {isProjectNotFound && (
+        {isComponentNotFound && (
+          <div style={{ marginTop: '15px', padding: '15px', background: '#fff3cd', borderRadius: '4px', border: '1px solid #ffc107' }}>
+            <p><strong>⚠️ Component Not Found:</strong></p>
+            <p>The component name "HomePage" doesn't exist in your Plasmic project.</p>
+            <ul style={{ textAlign: 'left', marginTop: '10px' }}>
+              <li>Open your Plasmic project and check the <strong>component name</strong> in the component tree</li>
+              <li>Common names: "Home", "Page", "Index", or check what you named your main page component</li>
+              <li>Update the component name in <code>web/app/page.tsx</code> (line 30)</li>
+            </ul>
+          </div>
+        )}
+        {isProjectNotFound && !isComponentNotFound && (
           <div style={{ marginTop: '15px', padding: '15px', background: '#fff3cd', borderRadius: '4px', border: '1px solid #ffc107' }}>
             <p><strong>⚠️ Project Not Found Error:</strong></p>
             <ul style={{ textAlign: 'left', marginTop: '10px' }}>
